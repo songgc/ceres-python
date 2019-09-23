@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
 project(ceres_python)
 
-set(PYBIND11_CPP_STANDARD -std=c++14)
+set (CMAKE_CXX_STANDARD 14)
 add_subdirectory(pybind11)
 pybind11_add_module(ceres_python src/bindings.cpp)
 target_link_libraries(ceres_python PRIVATE ceres)
 
-find_package(Eigen REQUIRED)
+find_package(Eigen3 3.2.7 REQUIRED NO_MODULE)
 include_directories(${EIGEN_INCLUDE_DIR})
 
 # # Build shared library for ceres-solver
